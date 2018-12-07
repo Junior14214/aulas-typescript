@@ -11,6 +11,7 @@ System.register(["../controllers/NegociacaoController"], function (exports_1, co
         execute: function () {
             controller = new NegociacaoController_1.NegociacaoController();
             $('.form').submit(controller.adiciona.bind(controller));
+            $('#botaoImporta').click(controller.importaDados.bind(controller));
         }
     };
 });

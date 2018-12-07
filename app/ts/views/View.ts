@@ -1,3 +1,5 @@
+import { logarTempoDeExecucao } from '../helpers/index';
+
 export abstract class View<T> {
     
     protected _elemento: JQuery;
@@ -9,6 +11,7 @@ export abstract class View<T> {
         this._escapar = escapar;
     }
 
+    @logarTempoDeExecucao()
     update(modelo: T): void {
 
         let template = this.template(modelo);
@@ -17,7 +20,11 @@ export abstract class View<T> {
         template = template.replace(/<script>[\s\S]*?<\/script>/g, '');
 
         this._elemento.html(template);
+
+        const t2 = performance.now();
+
     }
+    
 
     abstract template(modelo: T): string;
 }
